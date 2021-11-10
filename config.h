@@ -65,10 +65,11 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ netspeed_rx, "[  %sB/s ", "wlp8s0" },
-	{ netspeed_tx, " %sB/s | ", "wlp8s0" },
-	{ run_command, "%s ", "/home/sparrxw/.local/bin/slstatus_files/battery" },
-	{ battery_perc,	" %s%% | ", "BAT1" },
-	{ ram_used, " %sB | ", NULL },
-	{ datetime, "%s ]", "%a, %b %d  %R" },
+	{ netspeed_rx, "[  %sB/s ] ", "wlp8s0" },
+	//{ netspeed_tx, " %sB/s ] ", "wlp8s0" },
+	{ run_command, "[  %s", "/home/sparrxw/.local/bin/slstatus_files/battery" },
+	{ battery_perc,	"%s%% ] ", "BAT1" },
+	{ run_command, "[  %s ] ", "awk -F\"[][]\" '/Left:/ { print $2 }' <(amixer sget Master)" },
+	{ ram_used, "[  %sB ] ", NULL },
+	{ datetime, "[ %s ] ", "%a, %b %d  %R" },
 };
