@@ -65,12 +65,13 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ run_command, "[  %s", "/home/sparrxw/.local/bin/slstatus_battery" },
-	{ battery_perc,	"%s%% ] ", "BAT1" },
-	//{ netspeed_rx, "[  %sB/s ] ", "wlp8s0" },
-	{ netspeed_rx, "[  %sB/s ] ", "enp7s0" },
-	//{ netspeed_tx, " %sB/s ] ", "wlp8s0" },
-	{ run_command, "[  %s ] ", "awk -F\"[][]\" '/Left:/ { print $2 }' <(amixer sget Master)" },
-	{ ram_used, "[  %sB ] ", NULL },
-	{ datetime, "[ %s ] ", "%a, %b %d  %R" },
+	{ run_command, " %s ", "/home/sparrxw/.local/bin/slstatus_battery" },
+	{ battery_perc,	"%s%% | ", "BAT1" },
+	//{ netspeed_rx, " %sB/s | ", "wlp8s0" },
+	{ netspeed_rx, " %sB/s | ", "enp7s0" },
+	//{ netspeed_tx, " %sB/s | ", "wlp8s0" },
+	//{ netspeed_tx, " %sB/s | ", "enp7s0" },
+	{ run_command, " %s | ", "awk -F\"[][]\" '/Left:/ { print $2 }' <(amixer sget Master)" },
+	{ run_command, " %sB | ", "free -h | grep Mem | awk '{print $3}'" },
+	{ datetime, "%s", "%d %b %R" },
 };
